@@ -13,11 +13,11 @@ from filters import Filter, Sort, Limit
 #
 @dataclass(frozen=True, eq=False, order=False)
 class DUCO:
-    server_address: str = 'http://127.0.0.1:5000/'
+    server_address: str = 'https://server.duinocoin.com/'
     miners_endpoint: str = server_address + 'miners'
     balances_endpoint: str = server_address + 'balances'
     transactions_endpoint: str = server_address + 'transactions'
-    statistics_endpoint: str = server_address
+    statistics_endpoint: str = server_address + 'statistics'
 
     #
     # An internal function used to make a `GET` request to `url`.
