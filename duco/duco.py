@@ -3,8 +3,8 @@ import json
 from urllib.parse import urljoin
 from dataclasses import dataclass
 from typing import List
-from models import Miner, Transaction, Balance, Statistics
-from filters import Filter, Sort, Limit
+from .models import Miner, Transaction, Balance, Statistics
+from .filters import Filter, Sort, Limit
 
 
 #
@@ -18,6 +18,7 @@ class DUCO:
     balances_endpoint: str = server_address + 'balances'
     transactions_endpoint: str = server_address + 'transactions'
     statistics_endpoint: str = server_address + 'statistics'
+    user_endpoint: str = server_address + 'users'
 
     #
     # An internal function used to make a `GET` request to `url`.
@@ -31,8 +32,6 @@ class DUCO:
     # 
     def __get_request(self, url: str, params: dict = None):
         response = requests.get(url, params=params)
-
-        print(response.request.url)
         
         json_response = json.loads(response.text)
 
@@ -204,3 +203,12 @@ class DUCO:
         result = json.loads(response.text)
 
         return Statistics(**result)
+
+    #
+    # The function used to retrieve all objects related to a user from the REST API.
+    #
+    # Arguments:
+    # - `username`: the username of the user you want to get
+    #
+    # Returns: 
+    # - a `User` object

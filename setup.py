@@ -6,14 +6,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='duco',  
-    version='0.1.3',
+    version='0.1.11',
     author="Dan Sinclair",
     author_email="dansinclair@me.com",
     description="A python package for the Duino Coin REST API",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dansinclair25/duco-py",
-    packages=['duco'],
+    packages=setuptools.find_packages(),
     install_requires = [
         'requests',
     ],
